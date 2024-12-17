@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    /* Backgrounds */
+    --background: #F5F5DC; /* Subtle Beige for the main background */
+    --container: #FFFFFF; /* White for cards */
+    --overlay-gradient: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+  
+    /* Text Colors */
+    --text-primary: #3E3E3E; /* Warm dark gray for primary text */
+    --text-secondary: #7A7A7A; /* Softer gray for secondary text */
+  
+     /* Accent Colors */
+     --accent-primary: #FF8C42; /* Bold orange for primary accent to contrast with beige */
+     --accent-secondary: #4CA1A3; /* Rich teal for secondary accents */
+     --accent-tertiary: #FFD500; /* Warm yellow-orange for tertiary accents */
+  
+    /* Borders */
+    --border-color: #E0D6C3; /* Subtle border color */
+  
+    /* Shadows */
+    --shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow */
+    --shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.15); /* Medium shadow */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.overlay-gradient {
+    background: var(--overlay-gradient);
+}
+  
