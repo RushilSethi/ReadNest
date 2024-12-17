@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -58,15 +59,15 @@ const Navbar = () => {
               border-t-2 md:border-none border-border-color 
               ${isOpen ? "flex" : "hidden"}`}
       >
-        <button className="text-primary hover:text-accent-primary transition duration-200">
+        <Link to="/" className="text-primary hover:text-accent-primary transition duration-200">
           Home
-        </button>
-        <button className="text-primary hover:text-accent-secondary transition duration-200">
+        </Link>
+        <Link to="/books" className="text-primary hover:text-accent-secondary transition duration-200">
           Books
-        </button>
-        <button className="text-primary hover:text-accent-tertiary transition duration-200">
+        </Link>
+        <Link to="/add" className="text-primary hover:text-accent-tertiary transition duration-200">
           Add Book
-        </button>
+        </Link>
       </div>
     </nav>
   );

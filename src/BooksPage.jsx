@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { books } from "./dummyApi";
+import { Link } from "react-router-dom";
 
 const BooksPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -32,9 +33,7 @@ const BooksPage = () => {
           <button
             onClick={() => setSelectedCategory("")}
             className={`p-2 rounded-full ${
-              !selectedCategory
-                ? "bg-accent-primary text-white"
-                : "bg-gray-200"
+              !selectedCategory ? "bg-accent-primary text-white" : "bg-gray-200"
             }`}
           >
             All Categories
@@ -116,24 +115,27 @@ const BooksPage = () => {
         <h2 className="text-2xl font-semibold mb-4">Books</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredBooks.map((book) => (
-            <div
-              key={book.id}
-              className="bg-[var(--container)] text-[var(--text-primary)] rounded-lg shadow hover:shadow-lg transition-shadow"
-            >
-              <img
-                src={book.cover || "https://via.placeholder.com/150"}
-                alt={book.title}
-                className="w-full h-40 object-cover rounded-t-lg"
-              />
-              <div className="p-4">
-                <h3 className="text-lg font-bold">{book.title}</h3>
-                <p className="text-[var(--text-secondary)]">{book.author}</p>
-                <p className="text-sm mt-2">{book.category}</p>
-                <div className="mt-2 flex items-center justify-between">
-                  <span className="text-accent-tertiary">Rating: {book.rating}</span>
+            <Link to={`/books/${book.id}`} key={book.id}>
+              <div
+                className="bg-container text-primary rounded-lg shadow hover:shadow-lg transition-shadow"
+              >
+                <img
+                  src={book.cover || "https://via.placeholder.com/150"}
+                  alt={book.title}
+                  className="w-full h-40 object-cover rounded-t-lg"
+                />
+                <div className="p-4">
+                  <h3 className="text-lg font-bold">{book.title}</h3>
+                  <p className="text-secondary">{book.author}</p>
+                  <p className="text-sm mt-2">{book.category}</p>
+                  <div className="mt-2 flex items-center justify-between">
+                    <span className="text-accent-tertiary">
+                      Rating: {book.rating}
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>

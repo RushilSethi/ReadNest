@@ -30,7 +30,7 @@ const WelcomePage = () => {
         }}
       >
         <div className="absolute inset-0 bg-black opacity-40"></div>{" "}
-        <div className="relative z-10 py-12">
+        <div className="relative z-5 py-12">
           <h1 className="text-4xl font-bold mb-2 text-white">
             Welcome to the ReadNest
           </h1>
