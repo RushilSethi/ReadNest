@@ -7,6 +7,7 @@ import mysteryImage from "./assets/CategoryImages/mystery.jpeg";
 import romanceImage from "./assets/CategoryImages/romance.jpeg";
 import horrorImage from "./assets/CategoryImages/horror.jpeg";
 import welcomeBanner from "./assets/welcome_banner.webp";
+import { Link } from "react-router-dom";
 
 const categories = [
   { id: 1, name: "Fiction", image: fictionImage },
@@ -45,8 +46,8 @@ const WelcomePage = () => {
         <div className="relative overflow-x-auto whitespace-nowrap py-4">
           <div className="flex gap-4">
             {categories.map((category) => (
+              <Link to={`/books/${category.name}`} key={category.id}>
               <div
-                key={category.id}
                 className="relative min-w-[150px] h-40 rounded-lg overflow-hidden shadow-md cursor-pointer"
               >
                 <img
@@ -61,6 +62,7 @@ const WelcomePage = () => {
                   </span>
                 </div>
               </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -70,8 +72,8 @@ const WelcomePage = () => {
         <h2 className="text-2xl font-semibold mb-4">Popular Picks</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {popularPicks.map((book) => (
+            <Link to={`/book/${book.id}`} key={book.id}>
             <div
-              key={book.id}
               className="bg-container text-primary rounded-lg shadow hover:shadow-lg transition-shadow"
             >
               <img
@@ -84,6 +86,7 @@ const WelcomePage = () => {
                 <p className="text-secondary">{book.author}</p>
               </div>
             </div>
+            </Link>
           ))}
         </div>
       </section>

@@ -1,19 +1,24 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { books } from "./dummyApi";
+import NoBookSelected from "./NoBookSelected";
 
 const BookDetails = () => {
   const { id } = useParams();
   const book = books.find((book) => book.id === parseInt(id));
 
   if (!book) {
-    return <div>Book not found</div>;
+    return <NoBookSelected />;
   }
 
   return (
     <div className="bg-background text-primary min-h-screen p-6">
       <section className="mb-8 mt-12">
         <div className="max-w-4xl mx-auto">
+        <Link to="/books">
+        <button className="bg-accent-primary text-white px-4 py-2 rounded-lg mb-4">
+          To Books
+        </button>
+      </Link>
           <h1 className="text-4xl font-bold mb-4">{book.title}</h1>
           <img
             src={book.cover || "https://via.placeholder.com/150"}
