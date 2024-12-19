@@ -13,7 +13,7 @@ const ErrorPage = () => {
       <p className="text-lg mb-6">
         The page you are looking for might have been removed or is temporarily unavailable.
       </p>
-      <Link to="/" className="px-4 py-2 bg-accent-primary text-white rounded-lg hover:bg-accent-secondary transition-colors">
+      <Link to="/" className="px-4 py-2 bg-accent-primary text-white rounded-lg hover:bg-accent-secondary duration-300 ease-in">
         Go to Home
       </Link>
     </div>

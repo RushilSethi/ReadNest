@@ -1,4 +1,3 @@
-import { popularPicks } from "./dummyApi";
 import fictionImage from "./assets/CategoryImages/fiction.jpeg";
 import nonFictionImage from "./assets/CategoryImages/non_fiction.jpeg";
 import fantasyImage from "./assets/CategoryImages/fantasy.jpeg";
@@ -8,6 +7,7 @@ import romanceImage from "./assets/CategoryImages/romance.jpeg";
 import horrorImage from "./assets/CategoryImages/horror.jpeg";
 import welcomeBanner from "./assets/welcome_banner.webp";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const categories = [
   { id: 1, name: "Fiction", image: fictionImage },
@@ -20,6 +20,8 @@ const categories = [
 ];
 
 const WelcomePage = () => {
+
+  const popularPicks = useSelector(store => store.books.popularPicks);
   return (
     <div className="bg-background text-primary min-h-screen p-6">
       <section

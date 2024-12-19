@@ -10,7 +10,7 @@ const BooksPage = () => {
     "Fantasy": "bg-accent-primary",
     "Science Fiction": "bg-accent-secondary",
     "Mystery": "bg-accent-tertiary",
-    "Romance": "bg-accent-primary",
+    "Romance": "bg-accent-primary", 
     "Horror": "bg-accent-secondary",
   };
 

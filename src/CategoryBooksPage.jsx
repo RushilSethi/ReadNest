@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { books } from "./dummyApi";
+import { useSelector } from "react-redux";
 
 const CategoryBooks = () => {
+  const books = useSelector(store => store.books.items);
+
   const { category } = useParams();
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -31,7 +33,7 @@ const CategoryBooks = () => {
           value={searchQuery}
           onChange={handleSearchChange}
           placeholder="Search for books..."
-          className="w-full p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-primary"
+          className="w-full p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-secondary"
         />
       </section>
 
