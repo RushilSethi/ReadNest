@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const BookDetails = () => {
   const books = useSelector(store => store.books.items);
   const { id } = useParams();
-  const book = books.find((book) => book.id === parseInt(id));
+  const book = books.find((book) => book.id == id);
 
   if (!book) {
     return <NoBookSelected />;

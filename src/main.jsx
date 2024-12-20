@@ -11,6 +11,9 @@ import CategoryBooksPage from "./CategoryBooksPage.jsx";
 import NoBookSelected from "./NoBookSelected.jsx";
 import { Provider } from "react-redux";
 import bookStore from "./store/bookStore.jsx";
+import AddBookPage from "./AddBook/AddBookPage.jsx";
+import AddNewBookForm from "./AddBook/AddNewBookForm.jsx";
+import AddExistingToPopular from "./AddBook/AddExistingToPopular.jsx";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +32,9 @@ const router = createBrowserRouter([
       },
       { path: "/book", element: <NoBookSelected /> },
       { path: "/book/:id", element: <BookDetails /> },
+      { path: "/add", element: <AddBookPage /> },
+      { path: "/add/add-new-book", element: <AddNewBookForm /> },
+      { path: "/add/add-existing-to-popular", element: <AddExistingToPopular /> },
     ],
   },
 ]);

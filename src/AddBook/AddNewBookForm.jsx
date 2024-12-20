@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { addBook, addToPopularPicks } from "../redux/BooksSlice";
+import { useNavigate } from "react-router-dom";
+import { addBook, addToPopularPicks } from "../store/booksSlice";
 
 const AddNewBookForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const books = useSelector((state) => state.books.items);
 
   const [formData, setFormData] = useState({
     id: "",
     title: "",
     author: "",
+    description: "",
     category: "",
     rating: "",
     cover: "",
@@ -22,31 +25,54 @@ const AddNewBookForm = () => {
     const { name, value, type, checked } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: (type === "checkbox") ? checked : value,
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const trimmedTitle = formData.title.trim();
+    const trimmedAuthor = formData.author.trim();
+    const trimmedDescription = formData.description.trim();
+    const trimmedCategory = formData.category.trim();
+
+    if (!trimmedTitle || !trimmedAuthor || !trimmedDescription || !trimmedCategory) {
+      setMessage("Please fill out all required fields.");
+      return;
+    }
+
+    if (formData.rating > 5 || formData.rating < 0) {
+      setMessage("Rating must be between 0 and 5.");
+      return;
+    }
+
     const existingBook = books.find((book) => book.id === formData.id);
     if (existingBook) {
-      setMessage("This book already exists in the library.");
+      setMessage("This Book ID already exists in the library.");
       return;
     }
 
     const newBook = {
       id: formData.id,
-      title: formData.title,
-      author: formData.author,
-      category: formData.category,
+      title: trimmedTitle,
+      author: trimmedAuthor,
+      description: trimmedDescription,
+      category: trimmedCategory,
       rating: parseFloat(formData.rating),
+      cover: formData.cover || "https://via.placeholder.com/150",
+    };
+
+    const newBookPopularInfo = {
+      id: formData.id,
+      title: trimmedTitle,
+      author: trimmedAuthor,
       cover: formData.cover || "https://via.placeholder.com/150",
     };
 
     dispatch(addBook(newBook));
     if (formData.addToPopular) {
-      dispatch(addToPopularPicks(newBook));
+      dispatch(addToPopularPicks(newBookPopularInfo));
     }
 
     setMessage("Book successfully added!");
@@ -54,11 +80,13 @@ const AddNewBookForm = () => {
       id: "",
       title: "",
       author: "",
+      description: "",
       category: "",
       rating: "",
       cover: "",
       addToPopular: false,
     });
+    navigate("/books");
   };
 
   return (
@@ -73,7 +101,7 @@ const AddNewBookForm = () => {
             Book ID
           </label>
           <input
-            type="text"
+            type="number"
             id="id"
             name="id"
             value={formData.id}
@@ -105,6 +133,20 @@ const AddNewBookForm = () => {
             id="author"
             name="author"
             value={formData.author}
+            onChange={handleChange}
+            required
+            className="w-full p-2 border border-border-color rounded"
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="description" className="block text-secondary mb-1">
+            Description
+          </label>
+          <input
+            type="text"
+            id="description"
+            name="description"
+            value={formData.description}
             onChange={handleChange}
             required
             className="w-full p-2 border border-border-color rounded"
