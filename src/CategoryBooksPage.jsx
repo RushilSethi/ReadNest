@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import bookPlaceholder from "./assets/book_placeholder.jpeg"
 
 const CategoryBooks = () => {
   const books = useSelector(store => store.books.items);
@@ -58,7 +59,7 @@ const CategoryBooks = () => {
             <Link to={`/book/${book.id}`} key={book.id}>
               <div className="bg-container text-primary rounded-lg shadow hover:shadow-lg transition-shadow">
                 <img
-                  src={book.cover || "https://via.placeholder.com/150"}
+                  src={book.cover || bookPlaceholder}
                   alt={book.title}
                   className="w-full h-40 object-cover rounded-t-lg"
                 />

@@ -81,7 +81,7 @@ const WelcomePage = () => {
               <img
                 src={book.cover}
                 alt={book.title}
-                className="w-full h-40 object-cover rounded-t-lg"
+                className="w-full object-cover rounded-t-lg"
               />
               <div className="p-4">
                 <h3 className="text-lg font-bold">{book.title}</h3>

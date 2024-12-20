@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import NoBookSelected from "./NoBookSelected";
 import { useSelector } from "react-redux";
+import bookPlaceholder from "./assets/book_placeholder.jpeg"
 
 const BookDetails = () => {
   const books = useSelector(store => store.books.items);
@@ -22,7 +23,7 @@ const BookDetails = () => {
       </Link>
           <h1 className="text-4xl font-bold mb-4">{book.title}</h1>
           <img
-            src={book.cover || "https://via.placeholder.com/150"}
+            src={book.cover || bookPlaceholder}
             alt={book.title}
             className="w-full h-80 object-cover rounded-lg mb-6"
           />

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addBook, addToPopularPicks } from "../store/booksSlice";
+import newArrivalCover from "../assets/new_arrival_placeholder.jpg";
 
 const AddNewBookForm = () => {
   const dispatch = useDispatch();
@@ -60,14 +61,14 @@ const AddNewBookForm = () => {
       description: trimmedDescription,
       category: trimmedCategory,
       rating: parseFloat(formData.rating),
-      cover: formData.cover || "https://via.placeholder.com/150",
+      cover: formData.cover || newArrivalCover,
     };
 
     const newBookPopularInfo = {
       id: formData.id,
       title: trimmedTitle,
       author: trimmedAuthor,
-      cover: formData.cover || "https://via.placeholder.com/150",
+      cover: formData.cover || newArrivalCover,
     };
 
     dispatch(addBook(newBook));

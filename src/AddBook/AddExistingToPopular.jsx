@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addToPopularPicks } from "../store/booksSlice";
+import bookPlaceholder from "../assets/book_placeholder.jpeg"
 
 const AddExistingToPopular = () => {
   const [searchText, setSearchText] = useState("");
@@ -45,7 +46,7 @@ const AddExistingToPopular = () => {
               onClick={() => handleAddToPopular(book)}
             >
               <img
-                src={book.cover || "https://via.placeholder.com/150"}
+                src={book.cover || bookPlaceholder}
                 alt={book.title}
                 className="w-full h-32 object-cover rounded"
               />
